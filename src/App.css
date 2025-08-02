@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.logo {
+  animation: float 3s ease-in-out infinite;
+}
+
+.social-icons {
+  transition: transform 0.3s ease;
+}
+
+.social-icons.left:hover {
+  transform: scale(1.3) rotate(-10deg);
+}
+
+.social-icons.center:hover {
+  transform: scale(1.3) rotate(0deg);
+}
+
+.social-icons.right:hover {
+  transform: scale(1.3) rotate(10deg);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
