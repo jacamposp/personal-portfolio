@@ -10,16 +10,6 @@ const projects = [
     githubUrl: 'https://github.com/jacamposp/tech-news-app',
     projectUrl: 'https://tech-news-ai-app.vercel.app/',
   },
-  // {
-  //   id: 2,
-  //   title: 'Project Two',
-  //   description: 'Full-stack application with modern backend architecture',
-  //   content:
-  //     'A comprehensive full-stack solution featuring RESTful APIs, database design, and scalable microservices architecture.',
-  //   technologies: ['Node.js', 'Express', 'MongoDB'],
-  //   image: '/imgs/project2.png',
-  //   githubUrl: 'https://github.com/yourusername/project-two',
-  // },
 ]
 
 export default projects
