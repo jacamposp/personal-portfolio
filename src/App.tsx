@@ -6,14 +6,14 @@ import Projects from './components/Projects'
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-black text-white">
       <Navigation />
-      <main>
+      <main className="w-full">
         <Home />
         <About />
         <Projects />
       </main>
-    </>
+    </div>
   )
 }
 

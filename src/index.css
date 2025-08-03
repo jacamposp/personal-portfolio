@@ -51,6 +51,25 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {
@@ -59,11 +78,28 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #101010;
+  overflow-x: hidden;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: clamp(2rem, 5vw, 3.2em);
   line-height: 1.1;
+}
+
+/* Responsive touch targets for mobile */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Improve scrolling on mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .dark {
