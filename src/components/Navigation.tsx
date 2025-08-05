@@ -25,7 +25,7 @@ const Navigation = () => {
       <NavigationMenu className="fixed top-4 mobile-m:top-6 border border-gray-200 rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-[#242424] z-50 max-w-[95vw] mobile-m:max-w-none hidden tablet:block">
         <NavigationMenuList className="flex flex-row justify-center items-center gap-1.5 mobile-m:gap-2 tablet:gap-4">
           <NavigationMenuItem>
-            <NavigationMenuLink href="#home" className="text-xs mobile-m:text-sm font-medium">
+            <NavigationMenuLink href="#" className="text-xs mobile-m:text-sm font-medium">
               <span className="text-white hover:text-gray-400 transition-colors duration-300 hover:scale-105">
                 Home
               </span>

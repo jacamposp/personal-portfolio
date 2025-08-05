@@ -13,12 +13,12 @@ interface Project {
   projectUrl?: string
 }
 
-interface ProjectCardProps {
+interface ProjectModalProps {
   project: Project
   isSingleCard?: boolean
 }
 
-const ProjectCard = ({ project, isSingleCard = false }: ProjectCardProps) => {
+const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleCardClick = () => {
@@ -206,4 +206,4 @@ const ProjectCard = ({ project, isSingleCard = false }: ProjectCardProps) => {
   )
 }
 
-export default ProjectCard
+export default ProjectModal

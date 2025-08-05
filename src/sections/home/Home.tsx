@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const Home = () => {
   return (
     <section
-      id="home"
+      id="#"
       className="flex flex-col items-center justify-center min-h-screen px-4 pt-16 pb-16 relative text-center"
     >
       <motion.div

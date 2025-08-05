@@ -1,8 +1,8 @@
 import './App.css'
 import Navigation from './components/Navigation'
-import Home from './components/Home'
-import About from './components/About'
-import Projects from './components/Projects'
+import Home from './sections/home/Home'
+import About from './sections/about/About'
+import Projects from './sections/projects/Projects'
 
 function App() {
   return (

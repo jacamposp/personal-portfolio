@@ -8,10 +8,10 @@ const About = () => {
       className="flex flex-col min-h-screen pt-20 mobile-m:pt-24 tablet:pt-28 laptop:pt-32 w-full justify-center px-4 mobile-m:px-6 tablet:px-8 laptop:px-12"
     >
       <div className="max-w-6xl mx-auto w-full">
-        <h2 className="text-2xl mobile-m:text-3xl tablet:text-4xl laptop:text-5xl font-bold text-white text-center mobile-m:text-left mb-2 mobile-m:mb-3">
+        <h2 className="text-4xl mobile-m:text-3xl tablet:text-4xl laptop:text-5xl font-bold text-white text-center mobile-m:text-left mb-2 mobile-m:mb-3">
           About.
         </h2>
-        <p className="text-sm mobile-m:text-base tablet:text-lg laptop:text-xl text-gray-400 mb-6 mobile-m:mb-8 tablet:mb-10 text-center mobile-m:text-left max-w-3xl">
+        <p className="text-sm mobile-m:text-base tablet:text-lg laptop:text-xl text-gray-400 mb-6 mobile-m:mb-8 tablet:mb-10 text-center mobile-m:text-left max-w-full">
           Passionate about creating digital solutions that make a difference.
         </p>
 
