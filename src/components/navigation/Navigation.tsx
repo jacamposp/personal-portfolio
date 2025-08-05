@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { useIsMobile } from '@/hooks/isMobile'
 import NavigationDesktop from './navigationDesktop'
 import NavigationMobile from './navigationMobile'
-import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
 
 const Navigation = () => {
   const isMobile = useIsMobile()
