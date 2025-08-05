@@ -107,15 +107,21 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
 
       {/* Modal/Popup */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 mobile-m:p-4 tablet:p-6">
-          <div className="bg-gray-900 rounded-lg w-full max-w-sm mobile-m:max-w-md tablet:max-w-lg laptop:max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 mobile-m:p-4 tablet:p-6"
+          onClick={closeModal}
+        >
+          <div
+            className="bg-gray-900 rounded-lg w-full max-w-sm mobile-m:max-w-md tablet:max-w-lg laptop:max-w-2xl max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="relative">
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 mobile-m:top-3 mobile-m:right-3 tablet:top-4 tablet:right-4 text-gray-400 hover:text-white transition-colors z-10 p-1"
+                className="absolute top-3 right-3 mobile-m:top-4 mobile-m:right-4 tablet:top-5 tablet:right-5 text-white hover:text-red-400 transition-colors z-10 p-2 mobile-m:p-2.5 tablet:p-3 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm border border-white/20 hover:border-red-400/50"
               >
-                <X size={18} className="mobile-m:w-5 mobile-m:h-5 tablet:w-6 tablet:h-6" />
+                <X size={20} className="font-bold mobile-m:w-6 mobile-m:h-6 tablet:w-7 tablet:h-7" />
               </button>
 
               {/* Project image */}
