@@ -28,7 +28,7 @@ const NavigationDesktop = () => {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <a href="/Joel_Campos_CV.pdf" target="_blank" rel="noopener noreferrer" download="Joel_Campos_CV.pdf">
+          <a href="/Joel Campos CV.pdf" target="_blank" rel="noopener noreferrer" download="Joel Campos CV.pdf">
             <Button
               variant="outline"
               size="sm"
