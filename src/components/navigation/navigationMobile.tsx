@@ -51,13 +51,21 @@ const NavigationMobile = () => {
                 ))}
 
                 <div className="pt-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 text-base py-3"
+                  <a
+                    href="/Joel_Campos_CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="Joel_Campos_CV.pdf"
+                    onClick={closeMenu}
                   >
-                    Download CV
-                  </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 text-base py-3"
+                    >
+                      Download CV
+                    </Button>
+                  </a>
                 </div>
               </nav>
             </div>

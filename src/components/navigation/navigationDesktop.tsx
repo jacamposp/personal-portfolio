@@ -28,13 +28,15 @@ const NavigationDesktop = () => {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button
-            variant="outline"
-            size="sm"
-            className="cursor-pointer text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 hover:scale-105"
-          >
-            Download CV
-          </Button>
+          <a href="/Joel_Campos_CV.pdf" target="_blank" rel="noopener noreferrer" download="Joel_Campos_CV.pdf">
+            <Button
+              variant="outline"
+              size="sm"
+              className="cursor-pointer text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 hover:scale-105"
+            >
+              Download CV
+            </Button>
+          </a>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
