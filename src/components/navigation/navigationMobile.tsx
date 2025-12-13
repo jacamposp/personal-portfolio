@@ -52,7 +52,7 @@ const NavigationMobile = () => {
 
                 <div className="pt-4">
                   <a
-                    href="/Joel Campos CV.pdf"
+                    href="/Joel Campos Front-End CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     download="Joel Campos CV.pdf"
