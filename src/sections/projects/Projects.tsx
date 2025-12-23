@@ -15,7 +15,7 @@ const Projects = () => {
           className={`w-full ${
             projects.length === 1
               ? 'flex justify-center'
-              : 'grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-4 mobile-m:gap-6 tablet:gap-8'
+              : 'grid grid-cols-1 md:grid-cols-2 gap-4 mobile-m:gap-6 tablet:gap-8'
           }`}
         >
           {projects.map((project) => (

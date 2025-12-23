@@ -38,11 +38,11 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
         onClick={handleCardClick}
       >
         {project.image && (
-          <div className="relative w-full h-40 mobile-m:h-48 tablet:h-56 laptop:h-64 overflow-hidden px-3 mobile-m:px-4 tablet:px-5">
+          <div className="relative w-full h-64 mobile-m:h-48 tablet:h-56 laptop:h-64 overflow-hidden px-3 mobile-m:px-4 tablet:px-5">
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-lg"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102 rounded-lg"
             />
           </div>
         )}
