@@ -18,7 +18,7 @@ const projects = [
       'Sportico is a sports field booking platform built with React, TypeScript, next.js, and styled with Tailwind CSS and shadcn/ui. It features category filtering, intelligent caching, and robust error handling. It also offers a clean, user-friendly experience across devices.',
     technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres'],
     image: '/imgs/sportico.png',
-    githubUrl: 'https://github.com/jacamposp/sporticoApp',
+    githubUrl: 'https://github.com/jacamposp/sportico',
     projectUrl: 'https://sporticocr.vercel.app/',
   },
 ]
