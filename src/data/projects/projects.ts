@@ -19,7 +19,7 @@ const projects = [
     technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres'],
     image: '/imgs/sportico.png',
     githubUrl: 'https://github.com/jacamposp/sporticoApp',
-    projectUrl: 'https://sportico-app.vercel.app/',
+    projectUrl: 'https://sporticocr.vercel.app/',
   },
 ]
 
