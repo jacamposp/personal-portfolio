@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+/* Hide native cursor on pointer devices — custom cursor takes over */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
 #root {
   width: 100%;
   margin: 0 auto;
