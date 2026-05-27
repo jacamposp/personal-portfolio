@@ -34,7 +34,7 @@ const NavigationDesktop = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <a
-            href="/Joel Campos Front-End CV.pdf"
+            href="/Joel Campos - Full-Stack Developer.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download="Joel Campos CV.pdf"
