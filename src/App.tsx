@@ -6,7 +6,7 @@ import Projects from './sections/projects/Projects'
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground font-sans">
       <Navigation />
       <main className="w-full">
         <Home />

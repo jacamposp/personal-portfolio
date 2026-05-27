@@ -6,25 +6,30 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Button } from '@/components/ui/button'
 
+// Quita el fondo rosa del NavigationMenuLink (focus/hover/active → bg-accent)
+const navLinkWrapperClass =
+  'bg-transparent hover:bg-gray-600 focus:bg-gray-800 data-[active=true]:bg-gray-800 data-[active=true]:hover:bg-gray-800 data-[active=true]:focus:bg-gray-800'
+
+const navLinkClass =
+  'text-gray-400 hover:text-white transition-colors duration-300 hover:scale-105'
+
 const NavigationDesktop = () => {
   return (
-    <NavigationMenu className="fixed top-4 mobile-m:top-6 border border-gray-200 rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-[#242424] z-50 max-w-[95vw] mobile-m:max-w-none">
+    <NavigationMenu className="fixed top-4 mobile-m:top-6 border border-border rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-surface-elevated/90 backdrop-blur-md z-50 max-w-[95vw] mobile-m:max-w-none shadow-lg shadow-primary/5">
       <NavigationMenuList className="flex flex-row justify-center items-center gap-1.5 mobile-m:gap-2 tablet:gap-4">
         <NavigationMenuItem>
-          <NavigationMenuLink href="#">
-            <span className="text-white hover:text-gray-400 transition-colors duration-300 hover:scale-105">Home</span>
+          <NavigationMenuLink href="#" className={navLinkWrapperClass}>
+            <span className={navLinkClass}>Home</span>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#about">
-            <span className="text-white hover:text-gray-400 transition-colors duration-300 hover:scale-105">About</span>
+          <NavigationMenuLink href="#about" className={navLinkWrapperClass}>
+            <span className={navLinkClass}>About</span>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="#projects">
-            <span className="text-white hover:text-gray-400 transition-colors duration-300 hover:scale-105">
-              Projects
-            </span>
+          <NavigationMenuLink href="#projects" className={navLinkWrapperClass}>
+            <span className={navLinkClass}>Projects</span>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -37,7 +42,7 @@ const NavigationDesktop = () => {
             <Button
               variant="outline"
               size="sm"
-              className="cursor-pointer text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 hover:scale-105"
+              className="cursor-pointer text-foreground border-primary/50 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors duration-300 hover:scale-105"
             >
               Download CV
             </Button>

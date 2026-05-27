@@ -26,7 +26,7 @@ const NavigationMobile = () => {
           variant="outline"
           size="sm"
           onClick={toggleMenu}
-          className="bg-[#242424] border-gray-200 text-white hover:bg-gray-800 transition-all duration-300"
+          className="bg-surface-elevated/90 backdrop-blur-md border-border text-foreground hover:bg-primary/15 hover:border-primary/50 transition-all duration-300"
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </Button>
@@ -34,9 +34,12 @@ const NavigationMobile = () => {
 
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 tablet:hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onClick={closeMenu} />
+          <div
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            onClick={closeMenu}
+          />
 
-          <div className="absolute top-0 left-0 w-full bg-[#242424] border-b border-gray-200 shadow-lg transform transition-transform duration-300 ease-in-out">
+          <div className="absolute top-0 left-0 w-full bg-surface-elevated border-b border-border shadow-lg shadow-primary/10 transform transition-transform duration-300 ease-in-out">
             <div className="px-6 py-8">
               <nav className="space-y-6">
                 {navigationItems.map((item, index) => (
@@ -44,7 +47,7 @@ const NavigationMobile = () => {
                     key={index}
                     href={item.href}
                     onClick={closeMenu}
-                    className="block text-white text-lg font-medium hover:text-gray-400 transition-colors duration-300 py-2"
+                    className="block text-foreground text-lg font-medium hover:text-purple-accent transition-colors duration-300 py-2"
                   >
                     {item.label}
                   </a>
@@ -61,7 +64,7 @@ const NavigationMobile = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full text-white border-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 text-base py-3"
+                      className="w-full text-foreground border-primary/50 bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-base py-3"
                     >
                       Download CV
                     </Button>
