@@ -1,17 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, ExternalLink, X, ArrowUpRight } from 'lucide-react'
-
-interface Project {
-  id: number
-  title: string
-  description: string
-  content?: string
-  technologies: string[]
-  image?: string
-  githubUrl?: string
-  projectUrl?: string
-}
+import { ProjectPreview } from '@/components/projects/ProjectPreview'
+import type { Project } from '@/data/projects/projects'
 
 interface ProjectModalProps {
   project: Project
@@ -32,11 +23,6 @@ const topLineVariants = {
 const glowVariants = {
   rest: { opacity: 0 },
   hover: { opacity: 1 },
-}
-
-const imageVariants = {
-  rest: { scale: 1 },
-  hover: { scale: 1.06 },
 }
 
 const buttonsVariants = {
@@ -83,20 +69,16 @@ const ProjectModal = ({ project, index = 0, isSingleCard = false }: ProjectModal
           }}
         />
 
-        {project.image && (
-          <div className="relative w-full h-48 mobile-m:h-52 tablet:h-56 overflow-hidden">
-            <motion.img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-              variants={imageVariants}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-            <span className="absolute top-4 left-4 font-mono text-xs text-gold-accent/80 tracking-widest">
-              {projectNumber}
-            </span>
-          </div>
+        {(project.projectUrl || project.image) && (
+          <ProjectPreview
+            url={project.projectUrl}
+            image={project.image}
+            title={project.title}
+            mode="screenshot"
+            showLiveHint={!!project.projectUrl}
+            projectNumber={projectNumber}
+            className="h-48 mobile-m:h-52 tablet:h-56"
+          />
         )}
 
         <div className="p-5 mobile-m:p-6">
@@ -200,18 +182,24 @@ const ProjectModal = ({ project, index = 0, isSingleCard = false }: ProjectModal
                   <X size={18} />
                 </button>
 
-                {project.image && (
-                  <div className="relative w-full h-44 mobile-m:h-52 tablet:h-60 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
+                {project.projectUrl ? (
+                  <ProjectPreview
+                    url={project.projectUrl}
+                    title={project.title}
+                    mode="live"
+                    active={isModalOpen}
+                    projectNumber={projectNumber}
+                  />
+                ) : (
+                  project.image && (
+                    <ProjectPreview
+                      image={project.image}
+                      title={project.title}
+                      mode="screenshot"
+                      projectNumber={projectNumber}
+                      className="h-44 mobile-m:h-52 tablet:h-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                    <span className="absolute bottom-4 left-5 font-mono text-xs text-gold-accent tracking-widest">
-                      {projectNumber}
-                    </span>
-                  </div>
+                  )
                 )}
 
                 <div className="p-5 mobile-m:p-7 laptop:p-8">
