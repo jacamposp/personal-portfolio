@@ -31,6 +31,16 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/jacamposp/sportico',
     projectUrl: 'https://sporticocr.vercel.app/',
   },
+  {
+    id: 3,
+    title: 'Focus',
+    description: 'A task manager to capture, track, and complete what matters.',
+    content:
+      'Focus is a clean, distraction-free to-do app for staying on top of daily work. Users can add tasks, mark them complete, and filter by all, active, or completed items. A live stats dashboard shows total, active, and done counts with completion progress at a glance. Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, with Prisma, PostgreSQL, and Auth.js for persistent data and authentication.',
+    technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres', 'Auth.js'],
+    githubUrl: 'https://github.com/jacamposp/to-do-app',
+    projectUrl: 'https://focus--app.vercel.app/',
+  },
 ]
 
 export default projects
