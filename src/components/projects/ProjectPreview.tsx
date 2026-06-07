@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ExternalLink, Play } from 'lucide-react'
-import { getScreenshotUrl } from '@/lib/project-screenshot'
+import { fetchScreenshotUrl } from '@/lib/project-screenshot'
 
 interface ProjectPreviewProps {
   url?: string
@@ -28,12 +28,11 @@ export function ProjectPreview({
 }: ProjectPreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
+  const [screenshotUrl, setScreenshotUrl] = useState<string | null>(null)
   const [screenshotFailed, setScreenshotFailed] = useState(false)
   const [iframeLoading, setIframeLoading] = useState(true)
 
-  const screenshotSrc = url && !screenshotFailed ? getScreenshotUrl(url) : undefined
-  const fallbackSrc = image
-  const displayImage = screenshotSrc ?? fallbackSrc
+  const displayImage = screenshotUrl ?? (screenshotFailed ? image : undefined)
 
   useEffect(() => {
     if (shouldLoad || mode === 'live') return
@@ -51,6 +50,24 @@ export function ProjectPreview({
     observer.observe(containerRef.current)
     return () => observer.disconnect()
   }, [shouldLoad, mode])
+
+  useEffect(() => {
+    if (!shouldLoad || mode !== 'screenshot' || !url || screenshotFailed) return
+
+    let cancelled = false
+
+    fetchScreenshotUrl(url)
+      .then((src) => {
+        if (!cancelled) setScreenshotUrl(src)
+      })
+      .catch(() => {
+        if (!cancelled) setScreenshotFailed(true)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [shouldLoad, mode, url, screenshotFailed])
 
   useEffect(() => {
     if (mode === 'live' && active) {
@@ -85,38 +102,51 @@ export function ProjectPreview({
     )
   }
 
+  const isLoading =
+    !shouldLoad || (url && !screenshotUrl && !screenshotFailed && !image)
+
   return (
     <div
       ref={containerRef}
       className={`relative w-full overflow-hidden bg-background ${className}`}
     >
-      {displayImage && shouldLoad && (
+      {displayImage && (
         <img
           src={displayImage}
           alt={`${title} preview`}
           className="w-full h-full object-cover object-top"
           loading="lazy"
           onError={() => {
-            if (screenshotSrc && !screenshotFailed) {
+            if (screenshotUrl) {
+              setScreenshotUrl(null)
               setScreenshotFailed(true)
             }
           }}
         />
       )}
 
-      {displayImage && !shouldLoad && (
+      {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-muted/20">
           <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest animate-pulse">
-            Loading preview…
+            {shouldLoad ? 'Capturing preview…' : 'Loading preview…'}
           </span>
         </div>
       )}
 
-      {!displayImage && (
+      {!url && !image && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-muted/30">
           <ExternalLink className="w-6 h-6 text-muted-foreground/50" />
           <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
             No preview available
+          </span>
+        </div>
+      )}
+
+      {screenshotFailed && !image && url && !isLoading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-muted/30">
+          <ExternalLink className="w-6 h-6 text-muted-foreground/50" />
+          <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+            Preview unavailable
           </span>
         </div>
       )}
