@@ -3,12 +3,14 @@ import Navigation from './components/navigation/Navigation'
 import Home from './sections/home/Home'
 import About from './sections/about/About'
 import Projects from './sections/projects/Projects'
-import { CustomCursor } from './components/ui/custom-cursor'
+import Footer from './sections/footer/Footer'
+import { ScrollProgress } from './components/ui/scroll-progress'
 
 function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
-      <CustomCursor />
+      <div className="grain-overlay" aria-hidden="true" />
+      <ScrollProgress />
       <header>
         <Navigation />
       </header>
@@ -17,6 +19,7 @@ function App() {
         <About />
         <Projects />
       </main>
+      <Footer />
     </div>
   )
 }

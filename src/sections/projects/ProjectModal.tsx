@@ -15,17 +15,13 @@ interface Project {
 
 interface ProjectModalProps {
   project: Project
+  index?: number
   isSingleCard?: boolean
 }
 
-const techTagColors = [
-  'bg-purple-accent/15 text-purple-accent border border-purple-accent/30 font-mono',
-  'bg-pink-accent/15 text-pink-accent border border-pink-accent/30 font-mono',
-]
-
 const cardVariants = {
   rest: { y: 0 },
-  hover: { y: -8 },
+  hover: { y: -6 },
 }
 
 const topLineVariants = {
@@ -40,110 +36,106 @@ const glowVariants = {
 
 const imageVariants = {
   rest: { scale: 1 },
-  hover: { scale: 1.05 },
+  hover: { scale: 1.06 },
 }
 
 const buttonsVariants = {
-  rest: { opacity: 0, y: 10 },
+  rest: { opacity: 0, y: 8 },
   hover: { opacity: 1, y: 0 },
 }
 
-const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
+const ProjectModal = ({ project, index = 0, isSingleCard = false }: ProjectModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-
   const hasButtons = project.githubUrl || project.projectUrl
+  const projectNumber = String(index + 1).padStart(2, '0')
 
   return (
     <>
-      {/* ── Card ── */}
       <motion.div
-        className={`relative rounded-xl bg-card border border-border overflow-hidden cursor-pointer ${
-          isSingleCard ? 'w-full max-w-sm mobile-m:max-w-md tablet:max-w-lg laptop:max-w-xl' : 'w-full'
+        className={`relative rounded-lg bg-card border border-border overflow-hidden cursor-pointer corner-brackets group ${
+          isSingleCard ? 'w-full max-w-md tablet:max-w-lg' : 'w-full'
         }`}
         initial="rest"
         whileHover="hover"
         animate="rest"
         variants={cardVariants}
-        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 24 }}
         onClick={() => setIsModalOpen(true)}
-        style={{ boxShadow: '0 0 0 0 transparent' }}
-        whileTap={{ scale: 0.98 }}
+        whileTap={{ scale: 0.99 }}
       >
-        {/* Hover shadow boost */}
         <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
+          className="absolute inset-0 rounded-lg pointer-events-none"
           variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
-          style={{ boxShadow: '0 20px 60px rgba(168,85,247,0.18)' }}
+          style={{ boxShadow: '0 24px 64px oklch(0.78 0.14 72 / 12%)' }}
         />
 
-        {/* Bright top-line */}
         <motion.div
-          className="absolute top-0 left-0 right-0 h-[2px] z-10"
+          className="absolute top-0 left-0 right-0 h-[1px] z-10 glow-line"
           variants={topLineVariants}
-          transition={{ duration: 0.28, ease: 'easeOut' }}
-          style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899)' }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         />
-        {/* Glow behind top-line */}
         <motion.div
-          className="absolute top-0 left-0 right-0 h-20 pointer-events-none z-[1]"
+          className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-[1]"
           variants={glowVariants}
-          transition={{ duration: 0.28 }}
-          style={{ background: 'linear-gradient(to bottom, rgba(168,85,247,0.08), transparent)' }}
+          transition={{ duration: 0.3 }}
+          style={{
+            background: 'linear-gradient(to bottom, oklch(0.78 0.14 72 / 6%), transparent)',
+          }}
         />
 
-        {/* Image */}
         {project.image && (
-          <div className="relative w-full h-44 mobile-m:h-48 tablet:h-52 laptop:h-56 overflow-hidden">
+          <div className="relative w-full h-48 mobile-m:h-52 tablet:h-56 overflow-hidden">
             <motion.img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
               variants={imageVariants}
-              transition={{ duration: 0.45, ease: 'easeOut' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+            <span className="absolute top-4 left-4 font-mono text-xs text-gold-accent/80 tracking-widest">
+              {projectNumber}
+            </span>
           </div>
         )}
 
-        {/* Body */}
-        <div className="p-4 mobile-m:p-5 tablet:p-6">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="text-base mobile-m:text-lg tablet:text-xl laptop:text-2xl font-bold text-foreground leading-tight">
+        <div className="p-5 mobile-m:p-6">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <h3 className="font-display text-xl mobile-m:text-2xl text-foreground leading-tight">
               {project.title}
             </h3>
-            {/* "Open" hint icon — fades out on hover when buttons appear */}
             <motion.div
-              variants={{ rest: { opacity: 0.4 }, hover: { opacity: 0 } }}
-              className="text-muted-foreground mt-0.5 shrink-0"
+              variants={{ rest: { opacity: 0.35 }, hover: { opacity: 0 } }}
+              className="text-muted-foreground mt-1 shrink-0"
             >
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={18} />
             </motion.div>
           </div>
 
-          <p className="text-muted-foreground text-sm mobile-m:text-base mb-4 leading-relaxed">
+          <p className="text-muted-foreground text-sm mobile-m:text-base mb-5 leading-relaxed">
             {project.description}
           </p>
 
-          {/* Tech tags */}
-          <div className="flex gap-1.5 mobile-m:gap-2 flex-wrap mb-4">
-            {project.technologies.map((tech, index) => (
+          <div className="flex gap-2 flex-wrap mb-4">
+            {project.technologies.map((tech, i) => (
               <span
-                key={index}
-                className={`px-1.5 py-0.5 mobile-m:px-2 mobile-m:py-1 tablet:px-3 tablet:py-1.5 ${
-                  techTagColors[index % techTagColors.length]
-                } text-xs mobile-m:text-sm rounded`}
+                key={i}
+                className={`font-mono text-xs px-2.5 py-1 rounded border ${
+                  i % 2 === 0
+                    ? 'bg-gold-accent/10 text-gold-accent border-gold-accent/25'
+                    : 'bg-teal-accent/10 text-teal-accent border-teal-accent/25'
+                }`}
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          {/* Animated action buttons */}
           {hasButtons && (
             <motion.div
               variants={buttonsVariants}
               transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="flex gap-2 pt-3 border-t border-border/60"
+              className="flex gap-2 pt-4 border-t border-border/60"
               onClick={(e) => e.stopPropagation()}
             >
               {project.githubUrl && (
@@ -151,9 +143,9 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 mobile-m:py-2 rounded-lg text-xs mobile-m:text-sm font-medium border border-primary/40 text-purple-accent hover:bg-primary/15 hover:border-primary/70 transition-colors duration-200"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded text-xs mobile-m:text-sm font-mono uppercase tracking-wider border border-border text-muted-foreground hover:text-gold-accent hover:border-gold-accent/40 transition-colors duration-200"
                 >
-                  <Github size={13} />
+                  <Github size={14} />
                   GitHub
                 </a>
               )}
@@ -162,12 +154,12 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                   href={project.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 mobile-m:py-2 rounded-lg text-xs mobile-m:text-sm font-medium text-foreground hover:opacity-90 transition-opacity duration-200"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded text-xs mobile-m:text-sm font-mono uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity duration-200"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(168,85,247,0.8), rgba(236,72,153,0.8))',
+                    background: 'linear-gradient(135deg, oklch(0.78 0.14 72), oklch(0.68 0.12 195))',
                   }}
                 >
-                  <ExternalLink size={13} />
+                  <ExternalLink size={14} />
                   Live
                 </a>
               )}
@@ -176,54 +168,55 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
         </div>
       </motion.div>
 
-      {/* ── Modal ── */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
             key="backdrop"
-            className="fixed inset-0 bg-background/75 backdrop-blur-sm flex items-center justify-center z-50 p-2 mobile-m:p-4 tablet:p-6"
+            className="fixed inset-0 bg-background/80 backdrop-blur-md flex items-center justify-center z-50 p-3 mobile-m:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
+            transition={{ duration: 0.25 }}
             onClick={() => setIsModalOpen(false)}
           >
             <motion.div
               key="modal"
-              className="bg-card border border-border rounded-xl w-full max-w-sm mobile-m:max-w-md tablet:max-w-lg laptop:max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl shadow-primary/15"
-              initial={{ opacity: 0, scale: 0.93, y: 24 }}
+              className="bg-card border border-border rounded-lg w-full max-w-lg laptop:max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl"
+              style={{ boxShadow: '0 32px 80px oklch(0.78 0.14 72 / 10%)' }}
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 16 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, scale: 0.96, y: 12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Top gradient line */}
-              <div
-                className="h-[2px] w-full rounded-t-xl"
-                style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899)' }}
-              />
+              <div className="h-[1px] w-full glow-line" />
 
               <div className="relative">
-                {/* Close button */}
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="absolute top-3 right-3 mobile-m:top-4 mobile-m:right-4 text-foreground hover:text-pink-accent transition-colors z-10 p-2 bg-background/60 hover:bg-background/80 rounded-full backdrop-blur-sm border border-border hover:border-pink-accent/50"
+                  className="absolute top-4 right-4 text-foreground hover:text-teal-accent transition-colors z-10 p-2 bg-background/70 hover:bg-background/90 rounded-full backdrop-blur-sm border border-border"
+                  aria-label="Close modal"
                 >
-                  <X size={18} className="mobile-m:w-5 mobile-m:h-5" />
+                  <X size={18} />
                 </button>
 
-                {/* Image */}
                 {project.image && (
-                  <div className="relative w-full h-40 mobile-m:h-48 tablet:h-56 laptop:h-64 overflow-hidden">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/70 to-transparent" />
+                  <div className="relative w-full h-44 mobile-m:h-52 tablet:h-60 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                    <span className="absolute bottom-4 left-5 font-mono text-xs text-gold-accent tracking-widest">
+                      {projectNumber}
+                    </span>
                   </div>
                 )}
 
-                {/* Content */}
-                <div className="p-4 mobile-m:p-5 tablet:p-7 laptop:p-8">
-                  <div className="flex items-center justify-between mb-3 mobile-m:mb-4 tablet:mb-5">
-                    <h3 className="text-lg mobile-m:text-xl tablet:text-2xl laptop:text-3xl font-bold text-foreground pr-8">
+                <div className="p-5 mobile-m:p-7 laptop:p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-display text-2xl mobile-m:text-3xl text-foreground pr-10">
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2">
@@ -232,7 +225,7 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-purple-accent transition-colors p-1"
+                          className="text-muted-foreground hover:text-gold-accent transition-colors p-1"
                         >
                           <Github size={18} />
                         </a>
@@ -242,7 +235,7 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-pink-accent transition-colors p-1"
+                          className="text-muted-foreground hover:text-teal-accent transition-colors p-1"
                         >
                           <ExternalLink size={18} />
                         </a>
@@ -250,32 +243,34 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                     </div>
                   </div>
 
-                  <p className="text-muted-foreground mb-5 mobile-m:mb-6 text-sm mobile-m:text-base tablet:text-lg leading-relaxed">
+                  <p className="text-muted-foreground mb-6 text-sm mobile-m:text-base leading-relaxed">
                     {project.description}
                   </p>
 
                   {project.content && (
-                    <div className="mb-5 mobile-m:mb-6">
-                      <h4 className="text-sm mobile-m:text-base tablet:text-lg font-semibold text-foreground mb-2 mobile-m:mb-3">
+                    <div className="mb-6">
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
                         About this project
                       </h4>
-                      <p className="text-muted-foreground text-xs mobile-m:text-sm tablet:text-base leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed">
                         {project.content}
                       </p>
                     </div>
                   )}
 
                   <div>
-                    <h4 className="text-sm mobile-m:text-base tablet:text-lg font-semibold text-foreground mb-3">
-                      Technologies used
+                    <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                      Technologies
                     </h4>
-                    <div className="flex gap-1.5 mobile-m:gap-2 tablet:gap-3 flex-wrap">
-                      {project.technologies.map((tech, index) => (
+                    <div className="flex gap-2 flex-wrap">
+                      {project.technologies.map((tech, i) => (
                         <span
-                          key={index}
-                          className={`px-2 py-1 mobile-m:px-3 mobile-m:py-1.5 tablet:px-4 tablet:py-2 ${
-                            techTagColors[index % techTagColors.length]
-                          } text-xs mobile-m:text-sm tablet:text-base rounded-lg`}
+                          key={i}
+                          className={`font-mono text-xs px-3 py-1.5 rounded border ${
+                            i % 2 === 0
+                              ? 'bg-gold-accent/10 text-gold-accent border-gold-accent/25'
+                              : 'bg-teal-accent/10 text-teal-accent border-teal-accent/25'
+                          }`}
                         >
                           {tech}
                         </span>
@@ -283,15 +278,14 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                     </div>
                   </div>
 
-                  {/* CTA buttons in modal */}
                   {hasButtons && (
-                    <div className="flex gap-3 mt-6 mobile-m:mt-8 pt-5 border-t border-border/60">
+                    <div className="flex gap-3 mt-8 pt-6 border-t border-border/60">
                       {project.githubUrl && (
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium border border-primary/40 text-purple-accent hover:bg-primary/15 hover:border-primary/70 transition-colors"
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-sm font-mono uppercase tracking-wider border border-border text-muted-foreground hover:text-gold-accent hover:border-gold-accent/40 transition-colors"
                         >
                           <Github size={15} /> GitHub
                         </a>
@@ -301,9 +295,10 @@ const ProjectModal = ({ project, isSingleCard = false }: ProjectModalProps) => {
                           href={project.projectUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium text-foreground hover:opacity-90 transition-opacity"
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-sm font-mono uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity"
                           style={{
-                            background: 'linear-gradient(135deg, rgba(168,85,247,0.85), rgba(236,72,153,0.85))',
+                            background:
+                              'linear-gradient(135deg, oklch(0.78 0.14 72), oklch(0.68 0.12 195))',
                           }}
                         >
                           <ExternalLink size={15} /> Live demo

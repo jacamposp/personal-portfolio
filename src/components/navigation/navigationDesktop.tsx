@@ -6,20 +6,20 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Button } from '@/components/ui/button'
 
-// Quita el fondo rosa del NavigationMenuLink (focus/hover/active → bg-accent)
 const navLinkWrapperClass =
-  'bg-transparent hover:bg-gray-600 focus:bg-gray-800 data-[active=true]:bg-gray-800 data-[active=true]:hover:bg-gray-800 data-[active=true]:focus:bg-gray-800'
+  'bg-transparent hover:bg-transparent focus:bg-transparent data-[active=true]:bg-transparent'
 
 const navLinkClass =
-  'text-gray-400 hover:text-white transition-colors duration-300 hover:scale-105'
+  'relative font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold-accent after:transition-all after:duration-300 hover:after:w-full'
 
 const NavigationDesktop = () => {
   return (
     <NavigationMenu
       aria-label="Primary"
-      className="fixed top-4 mobile-m:top-6 border border-border rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-surface-elevated/90 backdrop-blur-md z-50 max-w-[95vw] mobile-m:max-w-none shadow-lg shadow-primary/5"
+      className="fixed top-5 mobile-m:top-6 border border-border/80 rounded-full px-2 py-1.5 mx-auto left-1/2 -translate-x-1/2 bg-surface-elevated/80 backdrop-blur-xl z-50 max-w-[95vw] shadow-lg"
+      style={{ boxShadow: '0 8px 32px oklch(0.78 0.14 72 / 6%)' }}
     >
-      <NavigationMenuList className="flex flex-row justify-center items-center gap-1.5 mobile-m:gap-2 tablet:gap-4">
+      <NavigationMenuList className="flex flex-row justify-center items-center gap-1 tablet:gap-2">
         <NavigationMenuItem>
           <NavigationMenuLink href="#home" className={navLinkWrapperClass}>
             <span className={navLinkClass}>Home</span>
@@ -36,6 +36,11 @@ const NavigationDesktop = () => {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <NavigationMenuLink href="#contact" className={navLinkWrapperClass}>
+            <span className={navLinkClass}>Contact</span>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <a
             href="/Joel Campos - Full-Stack Developer.pdf"
             target="_blank"
@@ -45,9 +50,9 @@ const NavigationDesktop = () => {
             <Button
               variant="outline"
               size="sm"
-              className="cursor-pointer text-foreground border-primary/50 bg-transparent hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors duration-300 hover:scale-105"
+              className="cursor-pointer font-mono text-xs uppercase tracking-wider text-foreground border-gold-accent/40 bg-transparent hover:bg-gold-accent hover:text-primary-foreground hover:border-gold-accent transition-all duration-300 rounded-full ml-1"
             >
-              Download CV
+              CV
             </Button>
           </a>
         </NavigationMenuItem>
