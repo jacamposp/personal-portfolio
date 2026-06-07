@@ -14,7 +14,7 @@ const NavigationMobile = () => {
   }
 
   const navigationItems = [
-    { href: '#', label: 'Home' },
+    { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
   ]

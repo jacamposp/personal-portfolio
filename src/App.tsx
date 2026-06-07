@@ -9,7 +9,9 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       <CustomCursor />
-      <Navigation />
+      <header>
+        <Navigation />
+      </header>
       <main className="w-full">
         <Home />
         <About />

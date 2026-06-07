@@ -2,8 +2,42 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/profilePicture.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Joel Campos is a Full Stack Developer with 5+ years of experience building scalable web applications with React, TypeScript, Node.js, and modern tooling."
+    />
+    <meta name="author" content="Joel Campos" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="canonical" href="%SITE_URL%/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:title" content="Joel Campos | Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Joel Campos is a Full Stack Developer with 5+ years of experience building scalable web applications with React, TypeScript, Node.js, and modern tooling."
+    />
+    <meta property="og:image" content="%SITE_URL%/profilePicture.png" />
+    <meta property="og:image:alt" content="Joel Campos - Full Stack Developer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Joel Campos Portfolio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Joel Campos | Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Joel Campos is a Full Stack Developer with 5+ years of experience building scalable web applications with React, TypeScript, Node.js, and modern tooling."
+    />
+    <meta name="twitter:image" content="%SITE_URL%/profilePicture.png" />
+
+    <link rel="me" href="https://github.com/jacamposp" />
+    <link rel="me" href="https://www.linkedin.com/in/joelcamposp/" />
+
+    <link rel="icon" type="image/png" href="/profilePicture.png" />
+    <link rel="apple-touch-icon" href="/profilePicture.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,9 +46,71 @@
     />
     <link href="/src/App.css" rel="stylesheet" />
     <title>Joel Campos | Full Stack Developer</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "%SITE_URL%/#website",
+            "url": "%SITE_URL%/",
+            "name": "Joel Campos Portfolio",
+            "description": "Portfolio of Joel Campos, a Full Stack Developer specializing in React, TypeScript, and Node.js.",
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "Person",
+            "@id": "%SITE_URL%/#person",
+            "name": "Joel Campos",
+            "url": "%SITE_URL%/",
+            "image": "%SITE_URL%/profilePicture.png",
+            "jobTitle": "Full Stack Developer",
+            "description": "Full Stack Developer with 5+ years of experience building scalable web applications with React, TypeScript, Node.js, and modern tooling.",
+            "sameAs": [
+              "https://github.com/jacamposp",
+              "https://www.linkedin.com/in/joelcamposp/",
+              "https://www.instagram.com/campos_j10"
+            ],
+            "knowsAbout": [
+              "React",
+              "TypeScript",
+              "Node.js",
+              "Next.js",
+              "Tailwind CSS",
+              "PostgreSQL",
+              "Express",
+              "Prisma"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "%SITE_URL%/#profilepage",
+            "url": "%SITE_URL%/",
+            "mainEntity": { "@id": "%SITE_URL%/#person" },
+            "isPartOf": { "@id": "%SITE_URL%/#website" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Joel Campos — Full Stack Developer</h1>
+        <p>
+          Full Stack Developer with 5+ years of experience building scalable web applications with
+          React, TypeScript, Node.js, and modern tooling. Available for work.
+        </p>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </nav>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

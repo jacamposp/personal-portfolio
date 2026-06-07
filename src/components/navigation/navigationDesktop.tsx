@@ -15,10 +15,13 @@ const navLinkClass =
 
 const NavigationDesktop = () => {
   return (
-    <NavigationMenu className="fixed top-4 mobile-m:top-6 border border-border rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-surface-elevated/90 backdrop-blur-md z-50 max-w-[95vw] mobile-m:max-w-none shadow-lg shadow-primary/5">
+    <NavigationMenu
+      aria-label="Primary"
+      className="fixed top-4 mobile-m:top-6 border border-border rounded-lg p-1.5 mobile-m:p-2 mx-auto left-1/2 transform -translate-x-1/2 bg-surface-elevated/90 backdrop-blur-md z-50 max-w-[95vw] mobile-m:max-w-none shadow-lg shadow-primary/5"
+    >
       <NavigationMenuList className="flex flex-row justify-center items-center gap-1.5 mobile-m:gap-2 tablet:gap-4">
         <NavigationMenuItem>
-          <NavigationMenuLink href="#" className={navLinkWrapperClass}>
+          <NavigationMenuLink href="#home" className={navLinkWrapperClass}>
             <span className={navLinkClass}>Home</span>
           </NavigationMenuLink>
         </NavigationMenuItem>

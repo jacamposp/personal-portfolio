@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <section
-      id="#"
+      id="home"
       className="flex flex-col items-center justify-center min-h-screen px-4 pt-16 pb-16 relative text-center overflow-hidden"
     >
       {/* Grid background */}
@@ -133,7 +133,10 @@ const Home = () => {
           <div className="absolute inset-[3px] rounded-full overflow-hidden z-10">
             <img
               src="/profilePicture.png"
-              alt="Joel Campos"
+              alt="Joel Campos, Full Stack Developer"
+              width={112}
+              height={112}
+              fetchPriority="high"
               className="w-full h-full object-cover"
             />
           </div>
