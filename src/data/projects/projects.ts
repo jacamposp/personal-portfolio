@@ -41,6 +41,16 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/jacamposp/to-do-app',
     projectUrl: 'https://focus--app.vercel.app/',
   },
+  {
+    id: 4,
+    title: 'Inkwell',
+    description: 'A personal journal for essays on travel, food, books, and everyday life.',
+    content:
+      'Inkwell is a thoughtful writing platform for publishing long-form essays and personal notes. Readers can browse the latest articles, search by topic, and explore posts tagged across culture, food, travel, and life. Each essay shows author, reading time, and publish date in a clean editorial layout with paginated archives. Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, backed by Prisma, PostgreSQL, and Auth.js for content management and sign-in.',
+    technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres', 'Auth.js'],
+    githubUrl: 'https://github.com/jacamposp/blog',
+    projectUrl: 'https://blog-omega-three-58.vercel.app/',
+  },
 ]
 
 export default projects
