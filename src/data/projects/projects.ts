@@ -49,7 +49,7 @@ const projects: Project[] = [
       'ONEIROS is a storytelling platform built around a simple premise: every story published there began as a real dream. Each dream is logged, reworked into a short story (a "Fragmento"), and the ones that ask for more room grow into full serialized works ("Ex Somnia") organized into chapters. Readers can search the archive by character, symbol, place, or emotion, follow their reading progress, save favorites in a personal library, and leave community reactions ("Ecos") on each entry. Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, backed by Prisma, PostgreSQL, and Auth.js for content management and sign-in.',
     technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres', 'Auth.js'],
     githubUrl: 'https://github.com/jacamposp/blog',
-    projectUrl: 'https://blog-omega-three-58.vercel.app/',
+    projectUrl: 'https://oneiros-blog.vercel.app/',
   },
 ]
 
