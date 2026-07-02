@@ -43,13 +43,13 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Inkwell',
-    description: 'A personal journal for essays on travel, food, books, and everyday life.',
+    title: 'ONEIROS — Ex Somnia',
+    description: 'A literary archive of stories born from real dreams.',
     content:
-      'Inkwell is a thoughtful writing platform for publishing long-form essays and personal notes. Readers can browse the latest articles, search by topic, and explore posts tagged across culture, food, travel, and life. Each essay shows author, reading time, and publish date in a clean editorial layout with paginated archives. Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, backed by Prisma, PostgreSQL, and Auth.js for content management and sign-in.',
+      'ONEIROS is a storytelling platform built around a simple premise: every story published there began as a real dream. Each dream is logged, reworked into a short story (a "Fragmento"), and the ones that ask for more room grow into full serialized works ("Ex Somnia") organized into chapters. Readers can search the archive by character, symbol, place, or emotion, follow their reading progress, save favorites in a personal library, and leave community reactions ("Ecos") on each entry. Built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui, backed by Prisma, PostgreSQL, and Auth.js for content management and sign-in.',
     technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres', 'Auth.js'],
     githubUrl: 'https://github.com/jacamposp/blog',
-    projectUrl: 'https://blog-omega-three-58.vercel.app/',
+    projectUrl: 'https://oneiros-blog.vercel.app/',
   },
 ]
 
