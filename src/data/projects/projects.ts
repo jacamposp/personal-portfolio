@@ -51,6 +51,16 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/jacamposp/blog',
     projectUrl: 'https://oneiros-blog.vercel.app/',
   },
+  {
+    id: 5,
+    title: 'Elite Soccer',
+    description: 'An ecommerce storefront for soccer jerseys with Stripe checkout and an admin panel.',
+    content:
+      'Elite Soccer is a Next.js storefront selling soccer jerseys, with Google sign-in, Stripe checkout, and an admin panel for managing products, stock, and orders. Built with Next.js, React, TypeScript, Tailwind CSS, and shadcn/ui, backed by Prisma, PostgreSQL, Auth.js for Google OAuth, Stripe for payments, and Vercel Blob for product image uploads.',
+    technologies: ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Shadcn/ui', 'Prisma', 'Postgres', 'Auth.js', 'Stripe'],
+    githubUrl: 'https://github.com/jacamposp/ecommerce-app',
+    projectUrl: 'https://elitesoccer.vercel.app/',
+  },
 ]
 
 export default projects
